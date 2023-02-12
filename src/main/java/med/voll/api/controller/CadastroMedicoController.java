@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/cadastro")
-public class CadastroController {
+public class CadastroMedicoController {
 
     @Autowired
     private MedicoRepository repository;
