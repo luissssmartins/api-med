@@ -18,7 +18,7 @@ public class EnderecoJpa {
     public EnderecoJpa(EnderecoRecord record) {
         this.logradouro = record.logradouro();
         this.bairro = record.bairro();
-        this.cep = record.bairro();
+        this.cep = record.cep();
         this.numero = record.numero();
         this.complemento = record.complemento();
         this.cidade = record.cidade();

@@ -31,6 +31,7 @@ public class MedicoJpa {
         this.nome = record.nome();
         this.email = record.email();
         this.crm = record.crm();
+        this.especialidade = record.especialidade();
         this.endereco = new EnderecoJpa(record.enderecoRecord());
     }
 }
