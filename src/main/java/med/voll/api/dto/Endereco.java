@@ -12,7 +12,13 @@ import med.voll.api.records.EnderecoRecord;
 @AllArgsConstructor
 public class Endereco {
 
-    private String logradouro, bairro, cep, numero, complemento, cidade, uf;
+    private String logradouro;
+    private String bairro;
+    private String cep;
+    private String numero;
+    private String complemento;
+    private String cidade;
+    private String uf;
 
     public Endereco(EnderecoRecord record) {
         this.logradouro = record.logradouro();
