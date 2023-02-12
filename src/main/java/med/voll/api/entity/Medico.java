@@ -1,4 +1,4 @@
-package med.voll.api.dto;
+package med.voll.api.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
