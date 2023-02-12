@@ -1,4 +1,4 @@
-package med.voll.api.jpa;
+package med.voll.api.dto;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ import med.voll.api.records.MedicoRecord;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class MedicoJpa {
+public class Medico {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,13 +25,13 @@ public class MedicoJpa {
     private Especialidade especialidade;
 
     @Embedded
-    private EnderecoJpa endereco;
+    private Endereco endereco;
 
-    public MedicoJpa(MedicoRecord record) {
+    public Medico(MedicoRecord record) {
         this.nome = record.nome();
         this.email = record.email();
         this.crm = record.crm();
         this.especialidade = record.especialidade();
-        this.endereco = new EnderecoJpa(record.enderecoRecord());
+        this.endereco = new Endereco(record.enderecoRecord());
     }
 }
