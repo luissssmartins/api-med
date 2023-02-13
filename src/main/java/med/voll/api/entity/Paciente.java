@@ -19,18 +19,25 @@ public class Paciente {
     private Long id;
 
     private String nome;
-    private String dataDeNascimento;
+
     private String idade;
+
+    private String email;
+
     private String cpf;
+
+    private String telefone;
+
 
     @Embedded
     private Endereco endereco;
 
     public Paciente(PacienteRecord record) {
         this.nome = record.nome();
-        this.dataDeNascimento = record.dataDeNascimento();
         this.idade = record.idade();
+        this.email = record.email();
         this.cpf = record.cpf();
-        this.endereco = new Endereco(record.enderecoRecord());
+        this.telefone = record.telefone();
+        this.endereco = new Endereco(record.endereco());
     }
 }
