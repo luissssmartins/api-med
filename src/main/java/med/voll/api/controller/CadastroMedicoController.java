@@ -1,6 +1,7 @@
 package med.voll.api.controller;
 
-import med.voll.api.records.MedicoRecord;
+import jakarta.transaction.Transactional;
+import med.voll.api.records.medico.MedicoRecord;
 import med.voll.api.repository.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,19 +10,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/cadastro")
+@RequestMapping("/cadastro/medico")
 public class CadastroMedicoController {
 
     @Autowired
     private MedicoRepository repository;
 
     @PostMapping
+    @Transactional
     public void handleCadastro(@RequestBody MedicoRecord medicoRecord)
     {
-        System.out.println(medicoRecord.toString());
 
+        System.out.println(medicoRecord);
 
-
-        //repository.save(new Medico(medicoRecord));
     }
 }
