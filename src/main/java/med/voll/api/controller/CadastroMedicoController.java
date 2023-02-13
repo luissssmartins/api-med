@@ -5,6 +5,7 @@ import jakarta.validation.Valid;
 import med.voll.api.entity.Medico;
 import med.voll.api.records.medico.MedicoRecord;
 import med.voll.api.records.medico.MedicosRecord;
+import med.voll.api.records.medico.UpdateMedicoRecord;
 import med.voll.api.repository.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -32,5 +33,12 @@ public class CadastroMedicoController {
     public Page<MedicosRecord> handleMedicos(@PageableDefault(size = 10, sort = {"nome"}) Pageable pageable)
     {
         return repository.findAll(pageable).map(MedicosRecord::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void handleUpdate(@RequestBody @Valid UpdateMedicoRecord updateMedicoRecord)
+    {
+        Medico medico = repository.getReferenceById(updateMedicoRecord.id());
     }
 }

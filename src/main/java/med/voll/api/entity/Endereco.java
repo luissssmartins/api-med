@@ -29,4 +29,43 @@ public class Endereco {
         this.cidade = record.cidade();
         this.uf = record.uf();
     }
+
+    public void update(EnderecoRecord endereco) {
+
+        if (endereco.logradouro() == null) {
+            throw new NullPointerException();
+        }
+
+        if (endereco.bairro() == null) {
+            throw new NullPointerException();
+        }
+
+        if (endereco.cep() == null) {
+            throw new NullPointerException();
+        }
+
+        if (endereco.numero() == null) {
+            throw new NullPointerException();
+        }
+
+        if (endereco.complemento() == null) {
+            throw new NullPointerException();
+        }
+
+        if (endereco.cidade() == null) {
+            throw new NullPointerException();
+        }
+
+        if (endereco.uf() == null) {
+            throw new NullPointerException();
+        }
+
+        this.logradouro = endereco.logradouro();
+        this.bairro = endereco.bairro();
+        this.cep = endereco.cep();
+        this.numero = endereco.numero();
+        this.complemento = endereco.complemento();
+        this.cidade = endereco.cidade();
+        this.uf = endereco.uf();
+    }
 }
