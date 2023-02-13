@@ -4,12 +4,15 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import med.voll.api.entity.Medico;
 import med.voll.api.records.medico.MedicoRecord;
+import med.voll.api.records.medico.MedicosRecord;
 import med.voll.api.repository.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/cadastro/medico")
@@ -23,5 +26,11 @@ public class CadastroMedicoController {
     public void handleCadastro(@RequestBody @Valid MedicoRecord medicoRecord)
     {
         repository.save(new Medico(medicoRecord));
+    }
+
+    @GetMapping
+    public Page<MedicosRecord> handleMedicos(@PageableDefault(size = 10, sort = {"nome"}) Pageable pageable)
+    {
+        return repository.findAll(pageable).map(MedicosRecord::new);
     }
 }
