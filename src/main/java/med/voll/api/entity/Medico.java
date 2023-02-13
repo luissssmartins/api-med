@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.enums.Especialidade;
-import med.voll.api.records.MedicoRecord;
+import med.voll.api.records.medico.MedicoRecord;
 
 @Table(name = "medicos")
 @Entity(name = "Medico")
@@ -34,6 +34,6 @@ public class Medico {
         this.email = record.email();
         this.crm = record.crm();
         this.especialidade = record.especialidade();
-        this.endereco = new Endereco(record.enderecoRecord());
+        this.endereco = new Endereco(record.endereco());
     }
 }

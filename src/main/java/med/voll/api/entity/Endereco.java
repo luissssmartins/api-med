@@ -4,7 +4,7 @@ import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import med.voll.api.records.EnderecoRecord;
+import med.voll.api.records.endereco.EnderecoRecord;
 
 @Embeddable
 @Getter
