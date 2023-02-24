@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.records.paciente.PacienteRecord;
+import med.voll.api.records.paciente.UpdatePacienteRecord;
 
 @Table(name = "pacientes")
 @Entity(name = "Paciente")
@@ -32,6 +33,8 @@ public class Paciente {
     @Embedded
     private Endereco endereco;
 
+    private Boolean ativo;
+
     public Paciente(PacienteRecord record) {
         this.nome = record.nome();
         this.idade = record.idade();
@@ -39,5 +42,22 @@ public class Paciente {
         this.cpf = record.cpf();
         this.telefone = record.telefone();
         this.endereco = new Endereco(record.endereco());
+        this.ativo = true;
+    }
+
+    public void update(UpdatePacienteRecord updatePacienteRecord) {
+
+        if (updatePacienteRecord.nome() != null)
+            this.nome = updatePacienteRecord.nome();
+
+        if (updatePacienteRecord.telefone() != null)
+            this.telefone = updatePacienteRecord.telefone();
+
+        if (updatePacienteRecord.endereco() != null)
+            this.endereco.update(updatePacienteRecord.endereco());
+    }
+
+    public void inactive() {
+        this.ativo = false;
     }
 }
