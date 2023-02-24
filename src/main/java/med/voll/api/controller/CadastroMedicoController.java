@@ -32,7 +32,7 @@ public class CadastroMedicoController {
     @GetMapping
     public Page<MedicosRecord> handleMedicos(@PageableDefault(size = 10, sort = {"nome"}) Pageable pageable)
     {
-        return repository.findAll(pageable).map(MedicosRecord::new);
+        return repository.findAllByAtivoTrue(pageable).map(MedicosRecord::new);
     }
 
     @PutMapping
@@ -41,5 +41,13 @@ public class CadastroMedicoController {
     {
         Medico medico = repository.getReferenceById(updateMedicoRecord.id());
         medico.update(updateMedicoRecord);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void handleDelete(@PathVariable Long id)
+    {
+        Medico medico = repository.getReferenceById(id);
+        medico.inactive();
     }
 }

@@ -33,6 +33,8 @@ public class Medico {
     @Embedded
     private Endereco endereco;
 
+    private Boolean ativo;
+
     public Medico(MedicoRecord record) {
         this.nome = record.nome();
         this.email = record.email();
@@ -40,6 +42,7 @@ public class Medico {
         this.crm = record.crm();
         this.especialidade = record.especialidade();
         this.endereco = new Endereco(record.endereco());
+        this.ativo = true;
     }
 
     public void update(UpdateMedicoRecord updateMedicoRecord) {
@@ -70,5 +73,9 @@ public class Medico {
 
         if (updateMedicoRecord.endereco() != null)
             this.endereco.update(updateMedicoRecord.endereco());
+    }
+
+    public void inactive() {
+        this.ativo = false;
     }
 }
