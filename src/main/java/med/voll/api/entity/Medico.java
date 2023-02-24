@@ -44,6 +44,7 @@ public class Medico {
 
     public void update(UpdateMedicoRecord updateMedicoRecord) {
 
+        /*
         if (updateMedicoRecord.nome() == null) {
             throw new NullPointerException("O nome do medico nao pode estar nulo.");
         }
@@ -55,9 +56,19 @@ public class Medico {
         if (updateMedicoRecord.endereco() == null) {
             throw new NullPointerException("Um ou mais campos do endereco nao podem estar nulos.");
         }
+         */
 
-        this.nome = updateMedicoRecord.nome();
-        this.telefone = updateMedicoRecord.telefone();
-        this.endereco.update(updateMedicoRecord.endereco());
+        //this.nome = updateMedicoRecord.nome();
+        //this.telefone = updateMedicoRecord.telefone();
+        //this.endereco.update(updateMedicoRecord.endereco());
+
+        if (updateMedicoRecord.nome() != null)
+            this.nome = updateMedicoRecord.nome();
+
+        if (updateMedicoRecord.telefone() != null)
+            this.telefone = updateMedicoRecord.telefone();
+
+        if (updateMedicoRecord.endereco() != null)
+            this.endereco.update(updateMedicoRecord.endereco());
     }
 }
