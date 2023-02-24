@@ -40,5 +40,6 @@ public class CadastroMedicoController {
     public void handleUpdate(@RequestBody @Valid UpdateMedicoRecord updateMedicoRecord)
     {
         Medico medico = repository.getReferenceById(updateMedicoRecord.id());
+        medico.update(updateMedicoRecord);
     }
 }
